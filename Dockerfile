@@ -1,20 +1,24 @@
-FROM java:8-jre
-MAINTAINER Arnau Siches <arnau@ustwo.com>
+# Dockerfile for sauce-connect
+# https://github.com/jjethwa/sauce-connect
 
-ENV SAUCE_VERSION 4.3.13
+FROM java:8-jre
+
+MAINTAINER Jordan Jethwa
+
+ENV SAUCE_VERSION 4.4.0
+ENV DEBIAN_FRONTEND noninteractive
 
 WORKDIR /usr/local/sauce-connect
 
 RUN apt-get update -qqy \
- && apt-get install -qqy \
-      wget \
- && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+ && apt-get install -qqy wget \
+ && apt-get clean
 
-RUN wget https://saucelabs.com/downloads/sc-$SAUCE_VERSION-linux.tar.gz -O - | tar -xz
+RUN wget https://saucelabs.com/downloads/sc-$SAUCE_VERSION-linux.tar.gz -O - | tar -xz --strip 1
 
-WORKDIR /usr/local/sauce-connect/sc-$SAUCE_VERSION-linux
+WORKDIR /usr/local/sauce-connect
 
-ENTRYPOINT ["/usr/local/sauce-connect/sc-4.3.13-linux/bin/sc"]
+ENTRYPOINT ["/usr/local/sauce-connect/bin/sc"]
 
 EXPOSE 8032
 
