@@ -20,6 +20,4 @@ WORKDIR /usr/local/sauce-connect
 
 ENTRYPOINT ["/usr/local/sauce-connect/bin/sc"]
 
-EXPOSE 8032
-
 CMD ["--version"]
