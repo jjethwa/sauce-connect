@@ -5,7 +5,7 @@ FROM java:8-jre
 
 MAINTAINER Jordan Jethwa
 
-ENV SAUCE_VERSION 4.5.1
+ENV SAUCE_VERSION 4.5.3
 ENV DEBIAN_FRONTEND noninteractive
 
 WORKDIR /usr/local/sauce-connect
