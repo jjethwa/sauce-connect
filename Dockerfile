@@ -10,9 +10,9 @@ ENV DEBIAN_FRONTEND noninteractive
 
 WORKDIR /usr/local/sauce-connect
 
-RUN apt-get update -qqy \
- && apt-get install -qqy wget \
- && apt-get clean
+#RUN apt-get update -qqy \
+# && apt-get install -qqy wget \
+# && apt-get clean
 
 RUN wget https://saucelabs.com/downloads/sc-$SAUCE_VERSION-linux.tar.gz -O - | tar -xz --strip 1
 
